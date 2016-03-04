@@ -13,6 +13,8 @@
 		051559381C894D8A002D0466 /* LemonadeStand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 051559361C894D8A002D0466 /* LemonadeStand.xcdatamodeld */; };
 		0515593A1C894D8A002D0466 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051559391C894D8A002D0466 /* Assets.xcassets */; };
 		0515593D1C894D8A002D0466 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0515593B1C894D8A002D0466 /* LaunchScreen.storyboard */; };
+		051559451C8959E7002D0466 /* supplies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051559441C8959E7002D0466 /* supplies.swift */; };
+		051559471C895B6F002D0466 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051559461C895B6F002D0466 /* Price.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		051559391C894D8A002D0466 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0515593C1C894D8A002D0466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0515593E1C894D8A002D0466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		051559441C8959E7002D0466 /* supplies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = supplies.swift; sourceTree = "<group>"; };
+		051559461C895B6F002D0466 /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			children = (
 				0515592F1C894D8A002D0466 /* AppDelegate.swift */,
 				051559311C894D8A002D0466 /* ViewController.swift */,
+				051559441C8959E7002D0466 /* supplies.swift */,
+				051559461C895B6F002D0466 /* Price.swift */,
 				051559331C894D8A002D0466 /* Main.storyboard */,
 				051559391C894D8A002D0466 /* Assets.xcassets */,
 				0515593B1C894D8A002D0466 /* LaunchScreen.storyboard */,
@@ -140,6 +146,8 @@
 			files = (
 				051559321C894D8A002D0466 /* ViewController.swift in Sources */,
 				051559381C894D8A002D0466 /* LemonadeStand.xcdatamodeld in Sources */,
+				051559451C8959E7002D0466 /* supplies.swift in Sources */,
+				051559471C895B6F002D0466 /* Price.swift in Sources */,
 				051559301C894D8A002D0466 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
