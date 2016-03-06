@@ -45,30 +45,123 @@ class ViewController: UIViewController {
     
     //Buttons
     @IBAction func purchaseLemonButtonPressed(sender: UIButton) {
+        if supplies.money >= price.lemon {
+            lemonsToPurchase += 1
+            supplies.money -= price.lemon
+            supplies.lemons += 1
+            updateMainView()
+        }else {
+            showAlertWithText(message: "You don't have enough money")
+        }
     }
     
     @IBAction func puchaseIceCubeButtonPressed(sender: UIButton) {
+        if supplies.money >= price.iceCube {
+            iceCubesToPurchase += 1
+            supplies.money -= price.iceCube
+            supplies.iceCubes += 1
+            updateMainView()
+        }else{
+            showAlertWithText(message: "You dont have enough money")
+        }
     }
 
     @IBAction func unpurchaseLemonButtonPressed(sender: UIButton) {
+        if lemonsToPurchase > 0 {
+            lemonsToPurchase -= 1
+            supplies.money += price.lemon
+            supplies.lemons -= 1
+            updateMainView()
+        }else{
+            showAlertWithText(message: "You dont have anything to return")
+        }
     }
 
     @IBAction func unpurchaseIceCubeButtonPressed(sender: UIButton) {
+        if iceCubesToPurchase > 0 {
+            iceCubesToPurchase -= 1
+            supplies.money += price.iceCube
+            supplies.iceCubes -= 1
+            updateMainView()
+        }else{
+            showAlertWithText(message: "You dont have anything to return")
+        }
     }
     
     @IBAction func mixLemonButtonPressed(sender: UIButton) {
+        if supplies.lemons > 0 {
+            lemonsToPurchase = 0
+            supplies.lemons -= 1
+            lemonsToMix += 1
+            updateMainView()
+        }else{
+            showAlertWithText(message: "You dont have enough inventory")
+        }
     }
     
     @IBAction func mixIceCubeButtonPressed(sender: UIButton) {
+        if supplies.iceCubes > 0 {
+            iceCubesToPurchase = 0
+            supplies.iceCubes -= 1
+            iceCubesToMix += 1
+            updateMainView()
+        }else{
+            showAlertWithText(message: "You dont have enough inventory")
+        }
     }
     
     @IBAction func unmixLemonButtonPressed(sender: UIButton) {
+        if lemonsToMix > 0 {
+            lemonsToPurchase = 0
+            lemonsToMix -= 1
+            supplies.lemons += 1
+            updateMainView()
+        }else{
+            showAlertWithText(message: "You have nothing to unmix")
+        }
     }
     
     @IBAction func unmixIceCubeButtonPressed(sender: UIButton) {
+        if iceCubesToMix > 0 {
+            iceCubesToPurchase = 0
+            iceCubesToMix -= 1
+            supplies.iceCubes += 1
+            updateMainView()
+        }else{
+            showAlertWithText(message: "You have nothing to unmix")
+        }
     }
     
     @IBAction func startDayButtonPressed(sender: UIButton) {
+        let customers = Int(arc4random_uniform(UInt32(11)))
+        
+        if lemonsToMix == 0 || iceCubesToMix == 0 {
+            showAlertWithText(message: "You need to add at least one lemon and one ice cube")
+        }else{
+            let lemonadeRatio = Double(lemonsToMix) / Double(iceCubesToMix)
+            
+            for x in 0...customers {
+                let preference = Double(arc4random_uniform(UInt32(101))) / 100
+                
+                if preference < 0.4 && lemonadeRatio > 1 {
+                    supplies.money += 1
+                    print("Paid")
+                }else if preference == 0.6 && lemonadeRatio < 1 {
+                    supplies.money += 1
+                    print("Paid")
+                }else if preference <= 0.6 && preference >= 0.4 && lemonadeRatio == 1 {
+                    supplies.money += 1
+                    print("Paid")
+                }else {
+                    print("else statement evaluated")
+                }
+            }
+         lemonsToPurchase = 0
+         iceCubesToPurchase = 0
+         lemonsToMix = 0
+         iceCubesToMix = 0
+         updateMainView()
+        }
     }
     
     //functions
