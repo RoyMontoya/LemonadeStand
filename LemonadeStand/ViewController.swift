@@ -27,14 +27,17 @@ class ViewController: UIViewController {
     var lemonsToMix = 0
     var iceCubesToMix = 0
     
+    var weatherArray: [[Int]] = [[-10, -9, -5, -7], [5, 8, 10, 9], [22, 25, 27, 23]]
+    var weatherToday: [Int] = [0, 0, 0, 0]
     
-    
-    
+    var weatherImageView: UIImageView = UIImageView(frame: CGRectMake(20, 50, 50, 50))
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(weatherImageView)
         updateMainView()
+        simulateWeatherToday()
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,7 +136,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startDayButtonPressed(sender: UIButton) {
-        let customers = Int(arc4random_uniform(UInt32(11)))
+        let avarage = findAvarage(weatherToday)
+        let customers = Int(arc4random_uniform(UInt32(abs(avarage))))
         
         if lemonsToMix == 0 || iceCubesToMix == 0 {
             showAlertWithText(message: "You need to add at least one lemon and one ice cube")
@@ -160,6 +164,7 @@ class ViewController: UIViewController {
          iceCubesToPurchase = 0
          lemonsToMix = 0
          iceCubesToMix = 0
+         simulateWeatherToday()
          updateMainView()
         }
     }
@@ -183,6 +188,29 @@ class ViewController: UIViewController {
         Alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         
         self.presentViewController(Alert, animated: true, completion: nil)
+    }
+    
+    func simulateWeatherToday(){
+        let index = Int(arc4random_uniform(UInt32(weatherArray.count)))
+        weatherToday = weatherArray[index]
+        switch index {
+        case 0: weatherImageView.image = UIImage(named: "cold")
+        case 1: weatherImageView.image = UIImage(named: "mild")
+        case 2: weatherImageView.image = UIImage(named: "warm")
+        default: weatherImageView.image = UIImage(named: "warm")
+        }
+    }
+    
+    func findAvarage(data: [Int]) -> Int {
+        var sum = 0
+        for x in data {
+            sum += x
+        }
+        var avarage: Double = Double(sum) / Double (data.count)
+        var rounded: Int = Int(ceil(avarage))
+        
+        return rounded
+        
     }
     
     
